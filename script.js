@@ -24,6 +24,7 @@ let playerScore = 0; let computerScore = 0;
 function playRound(playerChoice) {
   const computerChoice = getComputerChoice();
 
+  const capitalize = str => str[0].toUppercase() + str.slice(1);
   document.getElementById("playerChoice").innerText = `You chose ${playerChoice}`;
   document.getElementById("computerChoice").innerText = `Computer chose ${computerChoice}`;
 
@@ -45,6 +46,19 @@ document.getElementById("player-score").innerText = playerScore;
 document.getElementById("computer-score").innerText = computerScore;
 document.getElementById("result").innerText = result;
 
+if (playerScore === 5) {
+   document.getElementById("finalResult").innerText = "🎉 You win the game!";
+} else if (computerScore === 5) {
+   document.getElementById("finalResult").innerText = "💻 Computer wins the game!";
+}
+
+if (playerScore === 5 || computerScore === 5) {
+  document.querySelectorAll(".choice").forEach(btn => btn.disabled = true);
+}
+function playRound(playerChoice) {
+  let result = ""; 
+}
+
 }
 
 // Create getComputerChoice()
@@ -63,5 +77,10 @@ document.getElementById("restart").addEventListener("click", () => {
   document.getElementById("result").innerText = "";
   document.getElementById("playerChoice").innerText = "";
   document.getElementById("computerChoice").innerText = "";
+
+  document.querySelectorAll(".choice").forEach(btn => btn.disabled = false);
+
+
+
 });
 
